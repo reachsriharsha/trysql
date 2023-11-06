@@ -1,0 +1,28 @@
+{
+    "ParentQuery": {
+        "InputTable": "tbl_dcesip_signalling",
+        "DisplayFields": "imsi,vl_cause_code,tstampstart",
+        "Condition": "vl_cause_code > 900",
+        "ChildLink": "imsi",
+        "SqlQueryStr": "",
+        "Sequence": 0
+    },
+    "ChildQuery": [
+        {
+            "InputTable": "gh_volte_call",
+            "DisplayFields": "CALL_ID,ERAB_START_TIME,ERAB_END_TIME,ERAB_STATUS,POS_LAST_LAT,POS_LAST_LON,CELL_NAME",
+            "Condition": "ERAB_STATUS=2",
+            "ChildLink": "",
+            "SqlQueryStr": "",
+            "Sequence": 1
+        },
+        {
+            "InputTable": "gh_volte_events",
+            "DisplayFields": "CALL_ID,DATE_TIME,RSRP,RSRQ,CALL_STATUS ",
+            "Condition": "CALL_STATUS=2",
+            "ChildLink": "",
+            "SqlQueryStr": "",
+            "Sequence": 2
+        }
+    ]
+}
